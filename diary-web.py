@@ -6,7 +6,7 @@ from bottle import Bottle,route,run,debug,request,template
 from datetime import datetime
 import sys
 
-user_name='guest'
+
 
 @route('/',method='GET')
 def diary():
@@ -29,10 +29,15 @@ def diary():
     <p>Hello, I am your diary.你好
       <br />Do you wanna share something with me?</p>
 
+      <form action="/" method="GET">
+<input type="text" size="70" maxlength="100" name="user_name">
+<input type="submit" name="save_name" value="保存">
+</form>
+
     <p><b>Share your feeling:</b></p>
 <form action="/" method="GET">
 <input type="text" size="70" maxlength="100" name="newdiary">
-<input type="submit" name="save" value="Save">
+<input type="submit" name="save_diary" value="Save">
 </form>
 
 <p>====Diary====</p>'''
@@ -44,12 +49,18 @@ def diary():
   </div>
 
 </body>'''
-    if request.GET.get('save','').strip():
+
+    user_name='guest'
+    if request.GET.get('save_name','').strip():
+        user_name=request.GET.get('user_name', '').strip()
+        print user_name
+    if request.GET.get('save_diary','').strip():
 
         today=datetime.now()
         newDiary=request.GET.get('newdiary', '').strip()
 
         diaryFile = open('diary.txt','a')
+        print user_name+'now'
         diaryFile.write('\n'+today.strftime("%y/%m/%d")+ '  ['+user_name+'] '+newDiary)
         diaryFile.close()
 
@@ -61,9 +72,6 @@ def diary():
         return output_start+diaryContent+output_end
     return output_start+diaryContent+output_end
 
-@route('/name',method='GET')
-def username():
-    pass
 
 application = default_app()
 
