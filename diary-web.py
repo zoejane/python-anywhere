@@ -67,7 +67,7 @@ def diary(user_name='小小游侠'):
         with open('diary.txt', 'r+') as f:
             content = f.read()
             f.seek(0, 0)
-            newDiaryLine=today.strftime("%y/%m/%d")+ '  ['+user_name+'] '+newDiary
+            newDiaryLine=today.strftime("%Y/%m/%d/ %T")+ '  ['+user_name+'] '+newDiary
             f.write(newDiaryLine.rstrip('\r\n') + '\n' + content)
 
         diaryFile = open('diary.txt')
