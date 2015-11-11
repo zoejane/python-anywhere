@@ -7,15 +7,21 @@ from datetime import datetime
 import sys
 
 
+@route('/hello/<name>')
+def greet(name='Stranger'):
+    return template('Hello {{name}}, how are you?', name=name)
 
 @route('/',method='GET')
-def diary():
+@route('/<user_name>')
+def diary(user_name='guest'):
+#    print user_name
     diaryFile = open('diary.txt')
     diaryContent = diaryFile.read()
     diaryFile.close()
     diaryContent=diaryContent.replace('\n', '<br />')
+    lujing="'/'+username"
     output_start ='''
-    <head>
+    ead>
   <meta charset="utf-8">
   <title>Diary of Yours</title>
   <!-- Bootstrap core CSS -->
@@ -29,13 +35,9 @@ def diary():
     <p>Hello, I am your diary.你好
       <br />Do you wanna share something with me?</p>
 
-      <form action="/" method="GET">
-<input type="text" size="70" maxlength="100" name="user_name">
-<input type="submit" name="save_name" value="保存">
-</form>
-
     <p><b>Share your feeling:</b></p>
-<form action="/" method="GET">
+<form action="'''
+    output_middle='''" method="GET">
 <input type="text" size="70" maxlength="100" name="newdiary">
 <input type="submit" name="save_diary" value="Save">
 </form>
@@ -49,11 +51,7 @@ def diary():
   </div>
 
 </body>'''
-
-    user_name='guest'
-    if request.GET.get('save_name','').strip():
-        user_name=request.GET.get('user_name', '').strip()
-        print user_name
+    print user_name
     if request.GET.get('save_diary','').strip():
 
         today=datetime.now()
@@ -69,8 +67,8 @@ def diary():
         diaryFile.close()
         diaryContent=diaryContent.replace('\n', '<br />')
 
-        return output_start+diaryContent+output_end
-    return output_start+diaryContent+output_end
+        return output_start+user_name+output_middle+diaryContent+output_end
+    return output_start+user_name+output_middle+diaryContent+output_end
 
 
 application = default_app()
