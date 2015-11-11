@@ -1,4 +1,28 @@
+15/11/11  [jane] 中文测试
+15/11/11  [jane] ffff
+15/11/11  [jane] eeee
+15/11/11  [jane] frrr
+15/11/11  [zoe] eeeeee
+15/11/11  [jane] deeee
+15/11/11  [jane] deeeee
+15/11/11  [zoe] go there
+15/11/11  [zoe] test it
 
+15/11/11  [zoe] ffrrrr
+
+15/11/11  [zoe] eee
+eeeeee
+sdeeeeee
+deeeee
+
+15/11/11  [zoe] eeeed
+15/11/11  [zoe] new1
+15/11/11  [zoe] eee
+15/11/11  [zoe] eeeeeeee
+15/11/11  [zoe] eeeee
+15/11/11  [zoe] eeeee
+15/11/11  [guest] eeeee
+15/11/11  [guest] rrrr
 15/11/10 deded
 15/11/10 dededededed
 15/11/10 deededededed
@@ -76,3 +100,6 @@
 15/11/11  [zoe] deeeeee
 15/11/11  [zoe] eeeeee
 15/11/11  [jane] eeeee
+15/11/11  [jane] eeeee
+15/11/11  [jane] deee
+15/11/11  [zoe] ed

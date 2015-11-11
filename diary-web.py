@@ -21,7 +21,7 @@ def diary(user_name='guest'):
     diaryContent=diaryContent.replace('\n', '<br />')
     lujing="'/'+username"
     output_start ='''
-    ead>
+   <head>
   <meta charset="utf-8">
   <title>Diary of Yours</title>
   <!-- Bootstrap core CSS -->
@@ -57,10 +57,19 @@ def diary(user_name='guest'):
         today=datetime.now()
         newDiary=request.GET.get('newdiary', '').strip()
 
-        diaryFile = open('diary.txt','a')
-        print user_name+'now'
-        diaryFile.write('\n'+today.strftime("%y/%m/%d")+ '  ['+user_name+'] '+newDiary)
+        diaryFile = open('diary.txt')
+        diaryContent = diaryFile.read()
         diaryFile.close()
+
+#        diaryFile = open('diary.txt','a')
+#        diaryFile.write('\n'+today.strftime("%y/%m/%d")+ '  ['+user_name+'] '+newDiary)
+#        diaryFile.close()
+
+        with open('diary.txt', 'r+') as f:
+            content = f.read()
+            f.seek(0, 0)
+            newDiaryLine=today.strftime("%y/%m/%d")+ '  ['+user_name+'] '+newDiary
+            f.write(newDiaryLine.rstrip('\r\n') + '\n' + content)
 
         diaryFile = open('diary.txt')
         diaryContent = diaryFile.read()
